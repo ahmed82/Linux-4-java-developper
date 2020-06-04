@@ -1,4 +1,5 @@
 sudo yum update httpd
+rpm -q httpd or rpm -qa | grep -i http
 sudo yum install httpd
 
 sudo firewall-cmd --permanent --add-service=http
@@ -11,7 +12,7 @@ sudo firewall-cmd ––permanent ––add-port=443/tcp
 
 sudo firewall-cmd --reload
 
-sudo systemctl start httpd
+sudo systemctl start/stop/reload/restart httpd
 sudo systemctl status httpd
 
 hostname -I
@@ -24,7 +25,42 @@ sudo chmod -R 755 /var/www
 sudo systemctl restart httpd
 
 - Test wich port Appatche is listedning 
-$ netstat -tupan | grep -i http
 
+yum install openssl mod_ssl or
 yum install mod_ssl
 sudo systemctl restart httpd or service httpd restart
+
+
+## KEY
+----------
+$ netstat -tupan | grep -i http or $ netstat -tupan | grep -i '80\|443'
+ps aux | grep -i[h]ttp
+
+httpd -t
+httpd -v
+
+Configuration Files
+1- /etc/httpd/conf/httpd.conf
+2- /etc/httpd/conf.d/*.conf
+
+# View all active cofiguration
+$cat httpd.conf | grep -v '^$\|^\s*#'
+
+Log Files
+/var/log/httpd/*
+
+PID File 
+/var/log/httpd/httpd.pid
+
+startup script
+/usr/lib/systemd/httpd.service
+/etc/init.d/httpd
+
+<VirtualHost *:80>
+  ServerName www.example.com
+  ServerAlias example.com
+  ServerAdmin example@example.com
+  DocumentRoot "/www/example2"
+  ErrorLog logs/example.com-error_log
+  DirectoryIndex index.html
+</VirtualHost>
