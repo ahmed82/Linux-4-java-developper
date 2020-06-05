@@ -1,14 +1,11 @@
 sudo yum update httpd
-rpm -q httpd or rpm -qa | grep -i http
+rpm -q httpd or rpm -qa | grep -i http // check for Apache
 sudo yum install httpd
 
 sudo firewall-cmd --permanent --add-service=http
-or
-sudo firewall-cmd ––permanent ––add-port=80/tcp
-
+or sudo firewall-cmd ––permanent ––add-port=80/tcp
 sudo firewall-cmd --permanent --add-service=https
-or
-sudo firewall-cmd ––permanent ––add-port=443/tcp
+or sudo firewall-cmd ––permanent ––add-port=443/tcp
 
 sudo firewall-cmd --reload
 
@@ -30,14 +27,23 @@ yum install openssl mod_ssl or
 yum install mod_ssl
 sudo systemctl restart httpd or service httpd restart
 
+## to avoid using ip address in the code:
+
+[user@server conf.d]$ cat bolt.conf
+ProxyPass "/bolt/api" "http://localhost:8080/bolt/api"
+ProxyPassReverse "/bolt/api" "http://localhost:8080/bolt/api"
+
+ProxyPass "/bolt/oauth" "http://localhost:8080/bolt/oauth"
+ProxyPassReverse "/bolt/oauth" "http://localhost:8080/bolt/oauth"
+
 
 ## KEY
 ----------
 $ netstat -tupan | grep -i http or $ netstat -tupan | grep -i '80\|443'
 ps aux | grep -i[h]ttp
 
-httpd -t
-httpd -v
+httpd -t // Check the Syntax
+httpd -v 
 
 Configuration Files
 1- /etc/httpd/conf/httpd.conf
@@ -56,11 +62,17 @@ startup script
 /usr/lib/systemd/httpd.service
 /etc/init.d/httpd
 
+################## Create the Virtual Host #################
+mkdir /var/www/html/example.com
+chown apache:apache /var/www/html/example.com
+vi index.html
+
 <VirtualHost *:80>
   ServerName www.example.com
-  ServerAlias example.com
-  ServerAdmin example@example.com
-  DocumentRoot "/www/example2"
-  ErrorLog logs/example.com-error_log
+  ServerAlias example.com *.example.com
+  ServerAdmin webmaster@example.com
+  DocumentRoot /var/www/html/example.com
+  ErrorLog /logs/example.com/error.log
+  CustomLog /logs/example.com/access.log common
   DirectoryIndex index.html
 </VirtualHost>
