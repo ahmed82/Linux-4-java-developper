@@ -1,3 +1,4 @@
+### Apache HTTP Server  ###
 sudo yum update httpd
 rpm -q httpd or rpm -qa | grep -i http // check for Apache
 sudo yum install httpd
@@ -23,11 +24,24 @@ sudo systemctl restart httpd
 
 - Test wich port Appatche is listedning 
 
+# %%%%%%%%%%%%%%%%%%%%%%% HTTPS/SSL %%%%%%%%%%%%%%%%%%%%%
 yum install openssl mod_ssl or
 yum install mod_ssl
 sudo systemctl restart httpd or service httpd restart
 
-## to avoid using ip address in the code:
+
+Copy the certificate to the path, for example /etc/pki/tls/certs/www.example.com.crt
+mv /etc/httpd/conf/httpsd.key /etc/pki/tls/private/server.key
+mv /etc/httpd/conf/httpsd.crt /etc/pki/tls/certs/server.crt
+
+    Edit 
+/etc/httpd/conf.d/ssl.conf. 
+    Change the SSLCertificateFile and SSLCertificateKey lines to be.
+SSLCertificateFile /etc/pki/tls/certs/www.example.com.crt
+SSLCertificateKeyFile /etc/pki/tls/private/www.example.com.key
+
+service httpd start
+----------------------- ## ProxyPass ----------------------------
 
 [user@server conf.d]$ cat bolt.conf
 ProxyPass "/bolt/api" "http://localhost:8080/bolt/api"
@@ -37,7 +51,7 @@ ProxyPass "/bolt/oauth" "http://localhost:8080/bolt/oauth"
 ProxyPassReverse "/bolt/oauth" "http://localhost:8080/bolt/oauth"
 
 
-## KEY
+## KEY ---------------------------------------------------------
 ----------
 $ netstat -tupan | grep -i http or $ netstat -tupan | grep -i '80\|443'
 ps aux | grep -i[h]ttp
@@ -65,7 +79,7 @@ startup script
 ################## Create the Virtual Host #################
 mkdir /var/www/html/example.com
 chown apache:apache /var/www/html/example.com
-vi index.html
+vi index.html // echo Apache on RHEL 8 / CentOS 8 > /var/www/html/example.com/index.html
 
 <VirtualHost *:80>
   ServerName www.example.com
@@ -76,3 +90,24 @@ vi index.html
   CustomLog /logs/example.com/access.log common
   DirectoryIndex index.html
 </VirtualHost>
+
+
+Note: The SSL config file can be in a <VirtualHost> block in another config file. 
+You can always search for the SSL conf file on Linux distributions using this grep command:
+
+$ grep -i -r “SSLCertificateFile” /etc/httpd/
+
+Configure the httpd.conf file and enter the following commands on your VirtualHost to successfully enable SSL:
+
+<VirtualHost [IP ADDRESS]:443>
+  ServerAdmin webmaster@ssl-tutorials.com
+  DocumentRoot var/www
+  ServerName www.ssl-tutorials.com
+  ErrorLog www/home/logs/error_log
+  SSLEngine on
+  SSLCertificateFile /etc/ssl/ssl-tutorials_com.crt
+  SSLCertificateKeyFile /etc/ssl/ssl-tutorials.key
+  SSLCertificateChainFile /etc/ssl/ssl-tutorials_com.ca-bundle
+</VirtualHost> 
+
+
