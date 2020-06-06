@@ -1,6 +1,6 @@
 After create the 
-Dockerfile:
-```xml
+**Dockerfile**:
+```java
 FROM openjdk:8-jdk-alpine
 EXPOSE 8080
 MAINTAINER Ahmed AlSalih
@@ -10,7 +10,7 @@ COPY target/springboot-docker.war /usr/java/app
 ENTRYPOINT ["java","-jar","springboot-docker.war"]
 ```
 -------------------------------------------------
-```xml
+```java
 docker build -t <new-image-name> .
 ```
 ------------------------------------------------
@@ -19,7 +19,7 @@ docker run -p 91:80 -- name web <imagename>
 docker container run --name web -p 66:8080  -it -d spring-boot-docker
 ```
 ### list running Images
-```cmd
+```
 docker images
 ```
 ### list all the running status
@@ -27,15 +27,17 @@ docker images
 docker ps -a
 ```
 -----------------------------------------------------------------------------------------
+```
 docker ps
-rmi will not work because its running
+```
+> rmi will not work because its running
 # Remove the running container
 ```java
 $ docker stop <NAMES>
 $ docker rm <NAMES>
 ```
 ### Remove image
-```
+```java
 $ docker rmi <IMAGE ID>
 ```
 OR
@@ -46,22 +48,22 @@ $ docker container rm -f $(docker ps -aq)
 $ docker rmi <IMAGE ID>
 ```
 ----------------------------------------------------------------------------------------
-Go inside container
-```
+> Go inside container
+```java
 $ docker exec -it <container-id> /bin/sh
 $ winpty docker exec -it <container-id> //bin//sh
 ```
 ----------------------------------------------------------------------------------------
 ## Print the last 100 lines of a container’s logs 
-```
+```xml
 $ docker container logs --tail 100 web
 ```
-```
+```xml
 docker run -d -it --name os ubuntu
 ```
--i mean this std is open <Standered Input is Open>
--t interactive processor 
--d detached mode / so the process will not be attached to the terminal if closed will killed
+> -i mean this std is open <Standered Input is Open>
+> -t interactive processor 
+> -d detached mode / so the process will not be attached to the terminal if closed will killed
 
 ```
 docker exec -it os bash
@@ -77,7 +79,7 @@ back to desktop
 docker stop os
 docker rm os
 ```
-All the change in the docker container gone
+> All the change in the docker container gone
 
 without Dokerfile you can pull
 docker pull ubuntu
