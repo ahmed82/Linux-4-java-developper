@@ -1,6 +1,6 @@
 After create the 
 Dockerfile:
-```sh
+```xml
 FROM openjdk:8-jdk-alpine
 EXPOSE 8080
 MAINTAINER Ahmed AlSalih
@@ -23,14 +23,14 @@ docker container run --name web -p 66:8080  -it -d spring-boot-docker
 docker images
 ```
 ### list all the running status
-```
+```xml
 docker ps -a
 ```
 -----------------------------------------------------------------------------------------
 docker ps
 rmi will not work because its running
 # Remove the running container
-```
+```java
 $ docker stop <NAMES>
 $ docker rm <NAMES>
 ```
@@ -77,7 +77,7 @@ back to desktop
 docker stop os
 docker rm os
 ```
- <!--- All the change in the docker container gone --->
+All the change in the docker container gone
 
 without Dokerfile you can pull
 docker pull ubuntu
