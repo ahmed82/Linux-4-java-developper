@@ -21,8 +21,7 @@ sudo firewall-cmd --reload
 ```
 **sudo systemctl start/stop/reload/restart/enable httpd**
 
- Be sure that Apache starts at boot:
- > enable 
+ Be sure that Apache starts at boot by use `enable`
  
 sudo systemctl status httpd
 
@@ -30,13 +29,20 @@ hostname -I
 curl -4 icanhazip.com
 http://your_server_ip
 
-— Setting Up Virtual Hosts (Recommended)
+## Setting Up Virtual Hosts (Recommended)
+```
 sudo mkdir /var/www/MyWebsite/{public_html, logs}
 sudo chmod -R 755 /var/www
 sudo systemctl restart httpd
-
-- Test wich port Appatche is listedning 
-
+```
+## Test wich port Appatche is listedning 
+`lsof -i` will list open ports and the corresponding applications. 
+`lsof  | grep apache` for apache. Similar: `sudo netstat -anp | grep apache`.
+See `/etc/hosts` for IP addresses connected to names.
+See `/etc/apache2/sites-enabled/` for settings about the sites that are active for Apache.
+See `/etc/apache2/ports.conf` for the Listen. It will have a port-number behind it.
+That parameter can also be in `/etc/apache2/sites-enabled/`
+If `/etc/apache2/` does not exist you did not install Apache. @Nginx uses `/etc/nginx/sites-available` and the same style paramaters.
 ### ------------- HTTPS/SSL ------------- ###
 1. yum install openssl mod_ssl or
 ```
