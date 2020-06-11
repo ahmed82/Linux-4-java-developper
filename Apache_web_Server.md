@@ -79,8 +79,8 @@ ProxyPassReverse "/bolt/oauth" "http://localhost:8080/bolt/oauth"
 $ netstat -tupan | grep -i http or $ netstat -tupan | grep -i '80\|443'
 ps aux | grep -i[h]ttp
 
-httpd -t *Check the Syntax*
-httpd -v *Check installed apache version*
+### httpd -t *Check the Syntax*
+### httpd -v *Check installed apache version*
 
 ## Configuration Files
 1- /etc/httpd/conf/httpd.conf
