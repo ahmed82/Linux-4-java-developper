@@ -81,10 +81,12 @@ ps aux | grep -i[h]ttp
 
 ```
 httpd -t
-``` `Check the Syntax*`
+``` 
+`Check the Syntax*`
 ```
 httpd -v
-``` `Check installed apache version`
+```
+`Check installed apache version`
 
 ## Configuration Files
 1- /etc/httpd/conf/httpd.conf
