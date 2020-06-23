@@ -12,9 +12,17 @@ sudo yum install httpd
 ```
 ```xml
 sudo firewall-cmd --permanent --add-service=http
-or sudo firewall-cmd ––permanent ––add-port=80/tcp
+```
+or 
+```
+sudo firewall-cmd ––permanent ––add-port=80/tcp
+```
+```
 sudo firewall-cmd --permanent --add-service=https
-or sudo firewall-cmd ––permanent ––add-port=443/tcp
+```
+or 
+```
+sudo firewall-cmd ––permanent ––add-port=443/tcp
 ```
 ```java
 sudo firewall-cmd --reload
