@@ -4,6 +4,9 @@
 ```
 https://www.centos.org/download/
 ```
+I used an old verssion, search for 'CentOS 7.0' in the page below that should be stable:
+https://soft.lafibre.info/
+
 1. Create the virtual machine:
 
 ![header image](https://github.com/ahmed82/Linux-4-java-developper/vm/[master]/vm-1.PNG)
@@ -15,3 +18,4 @@ https://www.centos.org/download/
 6. start the machine and select the iso file.
 
 ## CentOS installatioin
+I used to install with GUI
