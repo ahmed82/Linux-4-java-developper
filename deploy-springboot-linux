@@ -1,0 +1,4 @@
+/opt/webapp/application.war
+
+set the log int /var/log/webapp/application-log.log
+
