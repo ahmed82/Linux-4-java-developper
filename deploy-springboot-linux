@@ -2,3 +2,35 @@
 
 set the log int /var/log/webapp/application-log.log
 
+## Install Java
+```
+sudo yum install java-1.8.0-openjdk-devel
+```
+for JDK 11
+```
+yum install java-11-openjdk-devel
+```
+Verify the installtioin:
+```
+rpm -qa | grep 
+```
+## 1- System V Init
+```
+sudo ln -s /path/to/your-app.jar /etc/init.d/your-app
+sudo service your-app start
+```
+## 2- Java as a Service Systemd
+we create a script named your-app.service using the following example and put it in /etc/systemd/system directory:
+```
+[Unit]
+Description=A Spring Boot application
+After=syslog.target
+ 
+[Service]
+User=baeldung
+ExecStart=/path/to/your-app.jar 
+SuccessExitStatus=143 
+ 
+[Install] 
+WantedBy=multi-user.target
+```
