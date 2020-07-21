@@ -84,6 +84,13 @@ docker rm os
 without Dokerfile you can pull
 docker pull ubuntu
 
+## Build a Docker Image with Maven
+Spring Boot image generator without even changing your pom.xml (and remember the Dockerfile if it is still there is ignored):
+```
+$ ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker
+```
+
+
 nisepidine and latitain cream 4:29PM  4-29
 
 
@@ -92,3 +99,6 @@ how does alteryx process data
 ventures
 cdw data warehouse
 fiona DATA LAKE
+
+
+
