@@ -43,8 +43,17 @@ $ docker rmi <IMAGE ID>
 OR
 
 ## Delete all running and stopped containers
+Run This command in Power-Shell
 ```
 $ docker container rm -f $(docker ps -aq)
+```
+or 
+```
+$ docker stop $(docker ps -aq)
+$ docker rm $(docker ps -aq)
+```
+Then
+```
 $ docker rmi <IMAGE ID>
 ```
 ----------------------------------------------------------------------------------------
