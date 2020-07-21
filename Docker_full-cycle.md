@@ -40,20 +40,20 @@ $ docker rm <NAMES>
 ```java
 $ docker rmi <IMAGE ID>
 ```
-OR
+# Stop & Delete all Containers
 
 ## Delete all running and stopped containers
 Run This command in Power-Shell
-```
+```java
 $ docker container rm -f $(docker ps -aq)
 ```
 or 
-```
+```java
 $ docker stop $(docker ps -aq)
 $ docker rm $(docker ps -aq)
 ```
 Then
-```
+```java
 $ docker rmi <IMAGE ID>
 ```
 ----------------------------------------------------------------------------------------
@@ -74,17 +74,17 @@ docker run -d -it --name os ubuntu
 > -t interactive processor 
 > -d detached mode / so the process will not be attached to the terminal if closed will killed
 
-```
+```java
 docker exec -it os bash
 ```
 os = name of the docker 
 bash = command lind inside the docker
-```
+```java
 mkdir test
 exit
 ```
 back to desktop
-```
+```java
 docker stop os
 docker rm os
 ```
@@ -95,7 +95,7 @@ docker pull ubuntu
 
 ## Build a Docker Image with Maven
 Spring Boot image generator without even changing your pom.xml (and remember the Dockerfile if it is still there is ignored):
-```
+```java
 $ ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker
 ```
 
