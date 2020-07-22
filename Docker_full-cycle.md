@@ -9,6 +9,24 @@ WORKDIR /usr/java/app
 COPY target/springboot-docker.war /usr/java/app
 ENTRYPOINT ["java","-jar","springboot-docker.war"]
 ```
+
+## Use multi-stage builds
+```java
+FROM maven:3-jdk-8  AS build
+WORKDIR /workspace/app
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+RUN mvn install -DskipTests
+# RUN ls && pwd && cd target  && ls
+
+FROM openjdk:8-jdk-alpine
+RUN mkdir -p /usr/java/app && cd /usr/java/app
+WORKDIR /usr/java/app
+COPY --from=build /workspace/app/target/license-management.war /usr/java/app
+ENTRYPOINT ["java","-jar","license-management.war"]
+```
 -------------------------------------------------
 ```java
 docker build -t <new-image-name> .
