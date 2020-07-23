@@ -116,8 +116,58 @@ Spring Boot image generator without even changing your pom.xml (and remember the
 ```java
 $ ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker
 ```
+## Volumes / bind --mount
 
+## Multi stage dynamic
+Parameterized build file. In Docker, parameters can be passed using either the ENV or ARG options. Both are set using the --build-arg option on the command-line.
+```
+FROM alpine/git as clone
+ARG url (1)
+WORKDIR /app
+RUN git clone ${url} (2)
+FROM maven:3.5-jdk-8-alpine as build
+ARG project (3)
+WORKDIR /app
+COPY --from=clone /app/${project} /app
+RUN mvn install
+FROM openjdk:8-jre-alpine
+ARG artifactid
+ARG version
+ENV artifact ${artifactid}-${version}.jar (4)
+WORKDIR /app
+COPY --from=build /app/target/${artifact} /app
+EXPOSE 8080
+CMD ["java -jar ${artifact}"] (5)
+```
+### Building:
+```
+docker build --build-arg url=https://github.com/spring-projects/spring-petclinic.git\
+  --build-arg project=spring-petclinic\
+  --build-arg artifactid=spring-petclinic\
+  --build-arg version=1.5.1\
+  -t nfrankel/spring-petclinic - < Dockerfile
+```
 
+```
+EXPOSE 8080
+ENTRYPOINT ["sh", "-c"]
+CMD ["java -jar ${artifact}"] (5)
+```
+```
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_TOOL_CHAIN
+COPY pom.xml /tmp/
+COPY src /tmp/src/
+WORKDIR /tmp/
+RUN mvn package
+
+FROM tomcat:9.0-jre8-alpine
+COPY --from=MAVEN_TOOL_CHAIN /tmp/target/wizard*.war $CATALINA_HOME/webapps/wizard.war
+
+HEALTHCHECK --interval=1m --timeout=3s CMD wget --quiet --tries=1 --spider http://localhost:8080/wizard/ || exit 1
+```
+```
+$ sudo docker run -d -p 80:8080 -p 443:8443 -t spring-boot:1.0
+```
 nisepidine and latitain cream 4:29PM  4-29
 
 
