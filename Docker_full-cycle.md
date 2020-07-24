@@ -118,6 +118,7 @@ $ ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=springio/gs
 ```
 ## Volumes / bind --mount
 
+docker run -p 8080:8080 -p 50000:50000 -v /your/home:/var/jenkins_home jenkins
 ## Multi stage dynamic
 Parameterized build file. In Docker, parameters can be passed using either the ENV or ARG options. Both are set using the --build-arg option on the command-line.
 ```
