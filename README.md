@@ -45,5 +45,3 @@ rpm -ivh --nodeps
 sudo systemctl start docker
 
 
-
-
