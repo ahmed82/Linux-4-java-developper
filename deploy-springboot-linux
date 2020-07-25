@@ -20,7 +20,12 @@ sudo ln -s /path/to/your-app.jar /etc/init.d/your-app
 sudo service your-app start
 ```
 ## 2- Java as a Service Systemd
-we create a script named your-app.service using the following example and put it in /etc/systemd/system directory:
+we create a script named your-app.service using the following example and put it in
+```
+cd /etc/systemd/system
+vi your-app.service
+```
+Add:
 ```
 [Unit]
 Description=A Spring Boot application
@@ -34,3 +39,10 @@ SuccessExitStatus=143
 [Install] 
 WantedBy=multi-user.target
 ```
+I made small modifecation to run the war file"
+```
+ExecStart=/usr/bin/java -jar /opt/legal/license-management.war
+```
+systemctl daemon-reload
+systemctl start license-management.service
+systemctl status license-management.service
