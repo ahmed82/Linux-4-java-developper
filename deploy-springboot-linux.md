@@ -53,15 +53,17 @@ SuccessExitStatus=143
 [Install] 
 WantedBy=multi-user.target
 ```
-I made small modifecation to run the war file" if you dont want to change the permission 
+I made small modifecation to run the war file" if you dont want to change the permission.
 ```java
 ExecStart=/usr/bin/java -jar /opt/legal/license-management.war
-```java
-to avoid using `/usr/bin/java -jar` you should change the war permission
+```
+To avoid using `/usr/bin/java -jar` you should change the war permission `the point to give excute permission.
 ```java
 $ chmod 500 your-app.war
 ```
 ## Controlle you java application
+```java
 $ systemctl daemon-reload
 $ systemctl start license-management.service
 $ systemctl status license-management.service
+```
