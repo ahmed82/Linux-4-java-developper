@@ -36,3 +36,5 @@ rasa train
 ```
 rasa run actions
 ```
+https://www.accelevents.com/e/JulyRasaCertificationWorkshop/portal/stage/17058
+https://www.accelevents.com/e/JulyRasaCertificationWorkshop/portal/stage/17059
