@@ -23,3 +23,6 @@ conda install tensorflow
 pip install rasa
 
 rasa init
+
+rasa train 
+rasa run actions
