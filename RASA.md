@@ -38,3 +38,26 @@ rasa run actions
 ```
 https://www.accelevents.com/e/JulyRasaCertificationWorkshop/portal/stage/17058
 https://www.accelevents.com/e/JulyRasaCertificationWorkshop/portal/stage/17059
+
+
+# Create Python Environment VM
+donload python
+```
+https://www.python.org/downloads/release/python-379/
+```
+run the command to set any folder to be as vertual environment for python by running the below commands inside any folder
+```
+"C:\Program Files\Python37\python.exe" -m venv venv
+```
+everytime you need to activate the venv by:
+```
+bin\Scripts\activate.bat
+```
+Install Rasa:
+```
+pip install rasa
+```
+create rasa project:
+```
+rasa init
+```
