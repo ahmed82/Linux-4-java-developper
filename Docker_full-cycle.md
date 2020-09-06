@@ -36,15 +36,16 @@ docker build -t <new-image-name> .
 docker run -p 91:80 -- name web <imagename>
 docker container run --name web -p 66:8080  -it -d spring-boot-docker
 ```
-### list running Images
+### list Images
 ```
 docker images
 ```
-### list all the running status
+### list all containers / running os stoped
 ```xml
 docker ps -a
 ```
 -----------------------------------------------------------------------------------------
+### list all the running container
 ```
 docker ps
 ```
