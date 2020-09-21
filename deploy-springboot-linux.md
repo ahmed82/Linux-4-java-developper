@@ -67,3 +67,14 @@ $ systemctl daemon-reload
 $ systemctl start license-management.service
 $ systemctl status license-management.service
 ```
+
+##	Memory and Environment Configuration
+JVM heap size can be maxed at 1000MB.  To do this, set the following environment variable prior to running tomcat’s startup.sh script:
+```xml
+export JAVA_OPTS="-Xms1024m -Xmx2048m -Dspring.profiles.active=XXX"
+```
+`Where XXX is one of {dev, qa, prod} that indicates the environment it is deployed to.
+
+
+
+
