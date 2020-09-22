@@ -59,6 +59,11 @@ $ docker rm <NAMES>
 ```java
 $ docker rmi <IMAGE ID>
 ```
+### Remove All images
+```
+docker image prune
+```
+
 # Stop & Delete all Containers
 
 ## Delete all running and stopped containers
