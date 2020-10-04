@@ -28,10 +28,21 @@ COPY --from=build /workspace/app/target/license-management.war /usr/java/app
 ENTRYPOINT ["java","-jar","license-management.war"]
 ```
 -------------------------------------------------
+PID: is just one of the Linux namespaces that provides containers with isolation to system resources. Other Linux namespaces include:
+MNT: Mount and unmount directories without affecting other namespaces.
+NET: Containers have their own network stack.
+IPC: Isolated interprocess communication mechanisms such as message queues.
+User: Isolated view of users on the system.
+UTC: Set hostname and domain name per container.
+These namespaces provide the isolation for containers that allow them to run together securely and without conflict with other containers running on the same system.
+
+## Create Image
 ```java
 docker build -t <new-image-name> .
 ```
 ------------------------------------------------
+## Run the Image
+The -t flag allocates a pseudo-TTY:
 ```java
 docker run -p 91:80 -- name web <imagename>
 docker container run --name web -p 66:8080  -it -d spring-boot-docker
@@ -49,10 +60,15 @@ docker ps -a
 ```
 docker ps
 ```
-> rmi will not work because its running
-# Remove the running container
+## Stop the containers by running this command for each container in the list:
+```
+$ docker container stop [container id]
+```
+`Tip: You need to enter only enough digits of the ID to be unique. Three digits is typically adequate.`
+
+## or Stop and Remove the running container
 ```java
-$ docker stop <NAMES>
+$ docker stop <NAMES> 
 $ docker rm <NAMES>
 ```
 ### Remove image
@@ -63,7 +79,11 @@ $ docker rmi <IMAGE ID>
 ```
 docker image prune
 ```
-
+## Remove the stopped containers.
+The following command removes any stopped containers, unused volumes and networks, and dangling images:
+```
+$ docker system prune
+```
 # Stop & Delete all Containers
 
 ## Delete all running and stopped containers
@@ -175,9 +195,25 @@ HEALTHCHECK --interval=1m --timeout=3s CMD wget --quiet --tries=1 --spider http:
 ```
 $ sudo docker run -d -p 80:8080 -p 443:8443 -t spring-boot:1.0
 ```
+# IBM class
+An image is the blueprint for spinning up containers. An image is a TAR of a file system, and a container is a file system plus a set of processes running in isolation
+```
+$ docker container run --detach --publish 8080:80 --name nginx nginx
+$ docker container run --detach --publish 8081:27017 --name mongo mongo:3.4
+```
+$ docker container logs [container id] 
+$ docker diff
+$ docker image history python-hello-world
+### Inspect the container:
+```
+docker container exec
+docker container exec -it 37f bash
+docker info
+docker commit -m "" -a <repo>
+docker node ls
+docker service ls
+```
 nisepidine and latitain cream 4:29PM  4-29
-
-
 power bi vs alteryx
 how does alteryx process data
 ventures
