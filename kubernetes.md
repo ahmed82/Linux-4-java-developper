@@ -23,3 +23,26 @@ kubectl get pods <pod-name> -o=yaml
 minikube status
 minikube stop
 ```
+
+## Imperative commands
+* Quickly create, update, and delete kubernetes objects
+* Easiest to learn
+* Don't provide an audit trail
+* Not very flexible
+```
+jubctl run nginx --image nginx
+```
+## Declarative commands
+* configuration files define one or more objects
+* No operation is specified
+* Works on files and directories
+* Configuration files define desired state, and kubernetes actualizes that state
+* Preferred method for production system.
+
+```
+kubctl apply -f nginx/
+```
+```
+az acr import -n xxxxxx2diphpc01acr --source docker.io/library/nginx:latest --image nginx:v1
+kubectl apply -f cbacr-ngnix.yaml
+```
