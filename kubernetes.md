@@ -30,7 +30,7 @@ minikube stop
 * Don't provide an audit trail
 * Not very flexible
 ```
-jubctl run nginx --image nginx
+kubectl run nginx --image nginx
 ```
 ## Declarative commands
 * configuration files define one or more objects
@@ -40,7 +40,10 @@ jubctl run nginx --image nginx
 * Preferred method for production system.
 
 ```
-kubctl apply -f nginx/
+kubectl apply -f nginx/
+```
+```
+kubectl apply -f file.yaml
 ```
 ```
 az acr import -n xxxxxx2diphpc01acr --source docker.io/library/nginx:latest --image nginx:v1
