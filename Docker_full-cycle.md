@@ -39,6 +39,9 @@ These namespaces provide the isolation for containers that allow them to run tog
 ## Create Image
 ```java
 docker build -t <new-image-name> .
+
+docker tag myimage:v1 us.icr.io/$MY_NAMESPACE/hello-world:1
+docker push us.icr.io/$MY_NAMESPACE/hello-world:1
 ```
 ------------------------------------------------
 ## Run the Image
