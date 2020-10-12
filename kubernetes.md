@@ -239,7 +239,28 @@ Note that kubectl uses “rs” as a short form for ReplicaSet, because nobody w
 to type more than absolutely necessary! If you already have a deployment that you want
 to scale, you can simply use the “scale” command as shown here. The first command creates
 a deployment. The second command gets the pods to show it was created. You see the “hello-Kubernetes-longnumber”
+```
+kubernetes get rs
+```
 pod created. The third command gets the “hello-Kubernetes” deployment. The command after that sets the “replicas” to "3". If you issue another “get pods” command as shown here, you
 should see three pods running. The ReplicaSet that was created with the deployment created
+
+If you already have a deployment that you want
+to scale, you can simply use the “scale” command as shown here. The first command creates a deployment. The second command gets the pods to show it was created. You see the “hello-Kubernetes-longnumber”
+pod created. The third command gets the “hello-Kubernetes” deployment. The command after that sets the
+“replicas” to "3". If you issue another “get pods” command as shown here, you
+should see three pods running. The ReplicaSet that was created with the deployment created
+two more pods, one ending in “flw” and the second ending in “b7v”. How do we
+```
+kubectl create -f deployment.yaml
+```
+```
+kubectl get pods
+```
+```
+kubectl scal deploy hello-kubernetes --replicas=3
+```
+
+
 
 
