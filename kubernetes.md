@@ -240,7 +240,7 @@ to type more than absolutely necessary! If you already have a deployment that yo
 to scale, you can simply use the “scale” command as shown here. The first command creates
 a deployment. The second command gets the pods to show it was created. You see the “hello-Kubernetes-longnumber”
 ```
-kubernetes get rs
+kubectl get rs
 ```
 pod created. The third command gets the “hello-Kubernetes” deployment. The command after that sets the “replicas” to "3". If you issue another “get pods” command as shown here, you
 should see three pods running. The ReplicaSet that was created with the deployment created
