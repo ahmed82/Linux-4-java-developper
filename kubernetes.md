@@ -3,10 +3,19 @@ https://kubernetes.io/docs/tasks/tools/install-minikube/
 ```
 kubectl version --client
 ```
-
+## Minikube
 Minikube using Chocolatey
 ```
 choco install minikube
+```
+
+### Start a cluster using the docker driver:
+```
+minikube start --driver=docker
+```
+To make docker the default driver:
+```
+minikube config set driver docker
 ```
 ```
 `Power Shall as admin`
