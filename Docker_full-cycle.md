@@ -37,6 +37,7 @@ UTC: Set hostname and domain name per container.
 These namespaces provide the isolation for containers that allow them to run together securely and without conflict with other containers running on the same system.
 
 ## Create Image
+docker build -t <rigistry-host/new-image:tag> .
 ```java
 docker build -t <new-image-name> .
 
