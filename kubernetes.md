@@ -32,7 +32,8 @@ kubectl get pods <pod-name> -o=yaml
 minikube status
 minikube stop
 ```
-Some examples of Kubernetes objects are Pods, namespaces, Deployments, ConfigMaps, and volumes,
+Some examples of Kubernetes objects are Pods, namespaces, Deployments, ConfigMaps, and volumes.
+`namespaces: key point is that namespaces can be used to provide logical separation of a cluster into virtual clusters.
 ## Imperative commands
 * Quickly create, update, and delete kubernetes objects
 * Easiest to learn
