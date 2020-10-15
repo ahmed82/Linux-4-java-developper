@@ -32,7 +32,7 @@ kubectl get pods <pod-name> -o=yaml
 minikube status
 minikube stop
 ```
-
+Some examples of Kubernetes objects are Pods, namespaces, Deployments, ConfigMaps, and volumes,
 ## Imperative commands
 * Quickly create, update, and delete kubernetes objects
 * Easiest to learn
