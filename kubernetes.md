@@ -104,6 +104,9 @@ Build and push the image.
 docker build -t us.icr.io/$MY_NAMESPACE/hello-world:1 . && docker push us.icr.io/$MY_NAMESPACE/hello-world:1
 ```
 
+The **"get"** and **"describe"** commands enable you to do this.
+The **"get"** command lists one or many resources, while the **"describe"** command shows details about a specific resource or group of resources.
+Both commands are namespace-scoped, meaning that by default they will operate on the resources in the targeted namespace.
 ```
 kubectl get pods -o wide
 kubectl describe pod <pod_name>
