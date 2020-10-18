@@ -19,7 +19,8 @@ the “docker build“ command to create an image, just as we did from the comma
 Thus, when a build is kicked off, OpenShift will take the input and produce a resultant
 image, pushing it to the internal OpenShift registry.
 In OpenShift, this strategy is simply called "Docker."
-"Source-to-image" is another build strategy offered by OpenShift.
+## "Source-to-image"
+is another build strategy offered by OpenShift.
 Source-to-image, often abbreviated as "s2i," is a tool for building reproducible container
 images.
 S2i injects application source code into a container image to produce a ready-to-run
@@ -50,7 +51,8 @@ The source is a git repository where the source for this build is located.
 The triggers describe events that can automatically cause a build to run.
 While you can run builds manually in OpenShift, this process can and should be automated.
 There are three build triggers available that stipulate when a build should run.
-The first is webhook triggers.
+The first is **webhook triggers.**
+## webhook
 A webhook sends a request to an OpenShift Container Platform API endpoint.
 Often this will be a GitHub webhook, though it can also be a generic webhook.
 If a GitHub webhook is utilized, GitHub can send the request to OpenShift when there is
@@ -66,7 +68,8 @@ so that your code always contains the latest security fixes.
 Lastly, the configuration change trigger causes a new build to run when a new BuildConfig
 resource is created.
 We mentioned that the output for our example build would result in an ImageStreamTag.
-ImageStreams are a nifty way to represent images in OpenShift.
+## ImageStreams 
+are a nifty way to represent images in OpenShift.
 An ImageStream is an abstraction for referencing images within OpenShift.
 Let’s say you store your images in IBM Cloud Container Registry, and you push an image
 to your repo using the tag “latest.”
