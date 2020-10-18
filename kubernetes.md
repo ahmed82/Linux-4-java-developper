@@ -273,6 +273,10 @@ kubectl get pods
 ```
 kubectl scal deploy hello-kubernetes --replicas=3
 ```
+ConfigMaps give us a way to provide configuration data to pods and deployments so we don't have to hard-code that data in the application code.
+```
+kubectl get configmaps
+```
 
 
 
