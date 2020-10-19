@@ -1,5 +1,51 @@
 # Red Hat OpenShift.
 
+```
+oc version
+```
+```
+[ ! -d 'cc201' ] && git clone https://gitlab.com/ibm/skills-network/courses/cc201.git
+
+cd cc201/labs/4_IntroOpenShift/
+```
+```
+oc get pods
+```
+In addition to Kubernetes objects, you can get OpenShift specific objects.
+```
+oc get buildconfigs
+```
+View the OpenShift project that is currently in use.
+```
+oc project
+```
+
+Click the outer circle to get information on the application.
+Click the inner circle with the Node.js logo to get information on the Deployment.
+Click the GitHub icon to access the code repository.
+Click the check mark to view the most recent build (you will see circular arrows if the build is in progress).
+Click the arrow coming out of a box to view the application in the browser if the application is externally available.
+
+1- Click the inner circle with the Node.js logo to bring up information on the Deployment.
+
+2- Observe the four resources associated with this Deployment: a Pod that runs the containerized application; a Build that uses the s2i strategy to build the application into a container image; a Service that exposes the application as a network service; and a Route that provides an externally reachable hostname.
+
+3- Click View logs on the line that says Build #1.
+
+4- Read the logs to see a few key completed steps. The repository is cloned, a Dockerfile is generated, an image is built, and the image is pushed to the internal registry.
+
+5- Click the Overview tab for this Build.
+
+6- Click the link to the owning BuildConfig under Owner.
+
+7- If you look at the Overview and YAML tabs, you'll see many concepts that we talked about in this module: triggers, build strategy, webhooks, and more.
+
+8- From the Overview tab, click the link to the ImageStreamTag under Output To.
+
+9- You can now see the ImageStreamTag that was created as an output of the build. Click the History tab to see the image in the internal registry to which this ImageStreamTag points.
+
+10- Return to the Topology view and click on your Deployment info. Click the Route that OpenShift automatically created for you. This will open the application in the browser.
+#####################################################################################################
 
 One way to accomplish this automation is by using continuous integration and continuous
 delivery, or CI/CD.
