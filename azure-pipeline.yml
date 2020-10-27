@@ -1,0 +1,178 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+name: $(build.sourceBranchName)-$(Date:yyyyMMdd)$(Rev:.r)
+trigger:
+  - master
+  - azure-pipelines
+stages:
+- stage: BotManagerBuildPipeline
+  displayName: App CI CD Build Pipeline
+  jobs:  
+  - job: BotManagerBuildPipeline
+    displayName: App CI CD Build Pipeline
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+    - checkout: self                                    
+      displayName: CodeCheckout
+      submodules: true
+
+    - task: Maven@3
+      displayName: BuildWithMaven
+      inputs:
+        mavenPomFile: 'pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: false
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+      inputs:
+        SourceFolder: '$(system.defaultworkingdirectory)/bot-manager-api/target/'
+        Contents: '*.war'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+      condition: succeededOrFailed()
+
+    - task: UniversalPackages@0
+      displayName: Upload artifacts to azure repository
+      inputs:
+        command: 'publish'
+        publishDirectory: '$(Build.ArtifactStagingDirectory)'
+        feedsToUsePublish: 'internal'
+        vstsFeedPublish: $(azureFeedPublishId)
+        vstsFeedPackagePublish: $(azureArtifactName)
+        versionOption: 'patch'        # or use $(artifactVersionType)
+
+#####################################################################################################################################
+#AppBackend
+#Checkout,Codescan,QualityCheck,Build,UploadArtifacts and Deploy To Webapp
+name: $(build.sourceBranchName)-$(Date:yyyyMMdd)$(Rev:.r)
+trigger: 
+  - release/sprint#                                   #We can add multiple branches in trigger to run the pipeline
+variables:
+- group: app-backend-dev-variables
+parameters:
+- name: sonarqube_scan
+  type: boolean
+  default: true
+  values: 
+  - true
+  - false
+- name: hcl_app_scan
+  type: boolean
+  default: false
+  values: 
+  - true
+  - false
+- name: unit_test
+  type: boolean
+  default: false
+  values: 
+  - true
+  - false
+- name: ignite_testing
+  type: boolean
+  default: false
+  values: 
+  - true
+  - false
+stages:
+- stage: AppBackendBuildPipeline
+  displayName: AppBackend CI CD Build Pipeline
+  jobs:  
+  - job: AppBackendBuildPipeline
+    displayName: AppBackend CI CD Build Pipeline
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    #Checkout the code from github repository
+    - checkout: self                                    
+      displayName: CodeCheckout
+    #Building the application artifacts using maven
+    - task: Maven@3
+      displayName: BuildWithMaven
+      inputs:
+        mavenPomFile: 'pom.xml'                         #Path to pom file
+        goals: 'package -Dmaven.test.skip=true'         #will package the code and skip the test cases as it is failing during the compilation
+        javaHomeOption: 'JDKVersion'                    #Sets JAVA_HOME either by selecting a JDK version that will be discovered during builds or by manually entering a JDK path
+        mavenVersionOption: 'Default'                   #Uses default version provided by the azure agent (we can mention the particular version for our project)
+        mavenAuthenticateFeed: false                    #Automatically authenticate Maven feeds from Azure Artifacts.
+        effectivePomSkip: false                         #Authenticate built-in Maven feeds using the POM only, allowing parent POMs in Azure Artifacts/Azure DevOps Server [Package Management] feeds.
+        sonarQubeRunAnalysis: false                     #To run the sonarqube codescan analysis
+        publishJUnitResults: false                      #Option to publish JUnit test results produced by the Maven build to Azure Pipelines. Each test results file matching Test Results Files will be published as a test run in Azure Pipelines
+    #HCL APP SCAN
+    - task: HCLAppScan@1
+      condition: ${{ parameters.hcl_app_scan}}
+      inputs:
+        AppSecTestService: 'hcl_appscan'
+        applications: '********-****-****-****-**********'
+        scanname: 'hcl_app_scan'
+        scantype: 'static'
+        scanloc: '/home/vsts/work/1/s'
+        ScanSpeedOptions: 'simple'
+    # It will configure all the required settings before executing the build
+    - task: SonarQubePrepare@4                         
+      displayName: SonarqubeInitial
+      condition: ${{ parameters.sonarqube_scan}}
+      inputs:
+        SonarQube: $(sonarServiceConnection)
+        scannerMode: 'CLI'                               #SonarScanner Version:4.11.0
+        configMode: 'manual'
+        cliProjectKey: $(sonarProjectKey)
+        cliProjectName: $(sonarProjectName)
+        cliSources: $(sonarSources)
+        extraProperties: |
+          sonar.java.source=$(sonarJavaSource)
+          sonar.java.binaries=$(sonarJavaBinaries)
+          sonar.branch.name=$(sonarBranchName)
+          sonar.branch.target=master
+    #It actually execute the analysis of the source code.
+    - task: SonarQubeAnalyze@4                          
+      displayName: SonarAnalysis
+      condition: ${{ parameters.sonarqube_scan}}
+    #It displays the Quality Gate status in the build summary and give you a sense of whether the application is ready "quality-wise".
+    - task: SonarQubePublish@4
+      displayName: SonarPublishResults
+      condition: ${{ parameters.sonarqube_scan}}
+      inputs:
+        pollingTimeoutSec: '300'
+    #Unit Testing with using maven
+    - task: Maven@3
+      condition: ${{ parameters.unit_test}}
+      displayName: Unit-testWithMaven
+      inputs:
+        mavenPomFile: 'pom.xml'                         #Path to pom file
+        goals: 'test'                                   #This goal will run the unit test cases
+        javaHomeOption: 'JDKVersion'                    #Sets JAVA_HOME either by selecting a JDK version that will be discovered during builds or by manually entering a JDK path
+        mavenVersionOption: 'Default'                   #Uses default version provided by the azure agent (we can mention the particular version for our project)
+        mavenAuthenticateFeed: false                    #Automatically authenticate Maven feeds from Azure Artifacts.
+        effectivePomSkip: false                         #Authenticate built-in Maven feeds using the POM only, allowing parent POMs in Azure Artifacts/Azure DevOps Server [Package Management] feeds.
+        sonarQubeRunAnalysis: false                     #To run the sonarqube codescan analysis
+        publishJUnitResults: true                       #Option to publish JUnit test results produced by the Maven build to Azure Pipelines. Each test results file matching Test Results Files will be published as a test run in Azure Pipelines
+        testResultsFiles: '**/surefire-reports/TEST-*.xml' 
+    #Upload artifacts to azure repository
+    - task: UniversalPackages@0
+      displayName: Upload artifacts to azure repository
+      inputs:
+        command: 'publish'                              #Options: download, publish
+        publishDirectory: $(artifactsPath)              #Path of the artifacts which has been generated during build
+        feedsToUsePublish: 'internal'                   #Options: internal, external
+        vstsFeedPublish: $(azureFeedPublishId)          #Required when feedsToUsePublish == Internal and need to pass azure feed name.
+        vstsFeedPackagePublish: $(azureArtifactName)    #Required when feedsToUsePublish == Internal and this will automatically generate feed ID.
+        versionOption: $(artifactVersionType)
+# IBM Ignite Testing for quality and test
+    - task: PowerShell@2
+      condition: ${{ parameters.ignite_testing}}
+      displayName: 'IBM Ignite Quality and Testing'
+      inputs:
+        targetType: filePath
+        filePath: './ignite_test_script.ps1'
+
+
