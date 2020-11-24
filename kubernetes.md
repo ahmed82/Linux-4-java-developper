@@ -278,6 +278,9 @@ ConfigMaps give us a way to provide configuration data to pods and deployments s
 kubectl get configmaps
 ```
 
-
+## Delete Evicted pods
+```
+kubectl get pod -n chatbotqa | grep Evicted | awk '{print $1}' | xargs kubectl delete pod -n chatbotqa
+```
 
 
