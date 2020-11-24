@@ -23,3 +23,15 @@ loudName": "AzureCloud",
 ```
 az account set --subscription XXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX
 ```
+## list subsecription
+```
+as account list --output table
+```
+az aks get-credentials --resource-group $rg --name $aks --overwrite-existing
+kubectl config set-context --current --namespace=$ns
+az acr login --name $acr
+helm get values gf-bot-qa -o yaml > gf.values.yml
+# Azure Maven deploy plugin
+```
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
+```
