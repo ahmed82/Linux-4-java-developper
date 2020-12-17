@@ -28,3 +28,8 @@ SPRING_PROFILES_ACTIVE
 ```
 
 You can define them as you did, using -Dspring.profiles.active when running your jar. You can also set the profile using a SPRING_PROFILES_ACTIVE environment variable or a spring.profiles.active system property.
+
+## set env variable Linux
+```
+export SPRING_PROFILES_ACTIVE=QA
+```
