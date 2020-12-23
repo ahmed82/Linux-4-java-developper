@@ -37,3 +37,8 @@ export SPRING_PROFILES_ACTIVE=QA
 setx -m JAVA_HOME "C:\Progra~1\Java\jdk1.8.0_XX"
 ```
 
+### Test Env , in new PowerShell window, type:
+```
+$env:PATH
+```
+
