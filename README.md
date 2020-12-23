@@ -44,4 +44,12 @@ rpm -ivh --nodeps
 ```
 sudo systemctl start docker
 
+----------------------------------
+## allow other to copy from home folder
+```
+chmod a+rx ~/
+```
+
+
+
 
