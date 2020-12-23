@@ -45,7 +45,7 @@ rpm -ivh --nodeps
 sudo systemctl start docker
 
 ----------------------------------
-## allow other to copy from home folder
+## Give everyone read/execute access to your $HOME `To copy from home folder`
 ```
 chmod a+rx ~/
 ```
