@@ -11,7 +11,7 @@ java -jar app.war  -Dspring.config.location=application-qa.yml
 ExecStart=/opt/legal/license-management.war --spring.profiles.active=qa
 ```
 
-## running the War/Jar
+## Running the War/Jar
 ```
 java -jar app.war --spring.profiles.active=qa
 ```
