@@ -17,3 +17,8 @@ git reset --hard HASH-CODE
 ```
 gitk --all
 ```
+
+### Go back one committ back 
+```
+git reset --soft HEAD~1
+```
