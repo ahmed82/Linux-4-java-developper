@@ -22,3 +22,7 @@ gitk --all
 ```
 git reset --soft HEAD~1
 ```
+If you don't want to keep these changes, simply use the --hard flag. Be sure to only do this when you're sure you don't need these changes anymore.
+```
+git reset --hard HEAD~1
+```
