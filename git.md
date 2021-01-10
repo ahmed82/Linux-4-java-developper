@@ -26,3 +26,8 @@ If you don't want to keep these changes, simply use the --hard flag. Be sure to 
 ```
 git reset --hard HEAD~1
 ```
+
+## View log in one line
+```
+git log --graph --decorate --oneline
+```
