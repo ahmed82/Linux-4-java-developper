@@ -26,7 +26,10 @@ If you don't want to keep these changes, simply use the --hard flag. Be sure to 
 ```
 git reset --hard HEAD~1
 ```
-
+`Note: if the reset not working delete every file from the git index by using:
+```
+git rm --cached -r .
+```
 ## View log in one line
 ```
 git log --graph --decorate --oneline
