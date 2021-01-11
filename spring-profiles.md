@@ -42,3 +42,8 @@ setx -m JAVA_HOME "C:\Progra~1\Java\jdk1.8.0_XX"
 $env:PATH
 ```
 
+## make you IDE use specific profile, add in the Run configurations... -> Arguments
+```
+-Dspring.profiles.active=dev
+```
+
