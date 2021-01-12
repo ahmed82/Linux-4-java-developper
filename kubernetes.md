@@ -283,4 +283,8 @@ kubectl get configmaps
 kubectl get pod -n chatbotqa | grep Evicted | awk '{print $1}' | xargs kubectl delete pod -n chatbotqa
 ```
 
-
+## Check memorey
+```
+kubectl top node
+kubectl top pod
+```
