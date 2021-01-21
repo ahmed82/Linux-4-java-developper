@@ -28,7 +28,7 @@ then you can create new project by
 rasa init
 ```
 
-then you can train your bot etc 
+### Then you can train your bot etc 
 ```
 rasa train 
 rasa run actions
