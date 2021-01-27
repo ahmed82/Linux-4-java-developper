@@ -46,4 +46,23 @@ $env:PATH
 ```
 -Dspring.profiles.active=dev
 ```
+# pass value to the application
+## 1 To pass valuse for properties or pom file .. all you need to defign it as 
+```
+${value}
+```
+Besides using files, we can pass properties directly on the command line:
+```
+java -jar app.jar --property="value"
+```
+## 2 or system properties,  before the -jar command:
+```
+java -Dproperty.name="value" -jar app.jar
+```
+## 3 Spring Boot will also detect environment variables, treating them as properties:
+```
+export name=value
+java -jar app.jar
+```
+
 
