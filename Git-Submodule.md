@@ -1,6 +1,6 @@
 git submodule add -b develop `<URL>`
 
-git submodule add -b develop  '<URL>'
+git submodule add -b develop  `<URL>`
 
 git submodule init
 git submodule update
