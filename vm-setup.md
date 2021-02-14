@@ -8,12 +8,15 @@ I used an old verssion, search for 'CentOS 7.0' in the page below that should be
 https://soft.lafibre.info/
 
 1. Create the virtual machine:
-
+```
 ![header image](https://github.com/ahmed82/Linux-4-java-developper/vm/[master]/vm-1.PNG)
-
 ![Drag Racing](http://github.com/ahmed82/Linux-4-java-developper/vm/[master]/vm-1.PNG)
+```
+![header image](https://github.com/ahmed82/Linux-4-java-developper/blob/master/vm/vm-1.PNG)
 
-<img src="http://github.com/ahmed82/Linux-4-java-developper/vm/[master]/vm-1.PNG"
+![Drag Racing](https://github.com/ahmed82/Linux-4-java-developper/blob/master/vm/vm-1.PNG)
+
+<img src="https://github.com/ahmed82/Linux-4-java-developper/blob/master/vm/vm-1.PNG"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
      
