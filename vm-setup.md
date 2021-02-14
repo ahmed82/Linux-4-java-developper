@@ -11,6 +11,8 @@ https://soft.lafibre.info/
 
 ![header image](https://github.com/ahmed82/Linux-4-java-developper/vm/[master]/vm-1.PNG)
 
+![Drag Racing](https://github.com/ahmed82/Linux-4-java-developper/vm/[master]/vm-1.PNG)
+
 2. pick Ram size and click Next.
 3. Select "Creat a virtual hard now" and click Next.
 4. Select VDI “VirtualBox Disk Image” and click Next, and then select “Dynamically allocated” and click Next then Create.
