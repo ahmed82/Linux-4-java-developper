@@ -35,7 +35,6 @@ git log --grep="JRA-224:"
 ```
 git log -- foo.py bar.py
 ```
-
 The -- parameter is used to tell git log that subsequent arguments are file paths and not branch names. If there’s no chance of mixing it up with a branch, you can omit the --.
 ### By Range
 This command is particularly useful when you use branch references as the parameters. It’s a simple way to show the differences between 2 branches. Consider the following command:
@@ -49,16 +48,16 @@ git log --no-merges
 ```
 git log --merges
 ```
-## to link the deattached Head
+### Link the deattached Head
 ```
 git reset --hard HASH-CODE
 ```
-### graphical view of the project history
+### Graphical view of the project history
 ```
 gitk --all
 ```
 
-### Go back one committ back 
+### Revert one committ back 
 ```
 git reset --soft HEAD~1
 ```
