@@ -174,5 +174,3 @@ stages:
       inputs:
         targetType: filePath
         filePath: './ignite_test_script.ps1'
-
-
