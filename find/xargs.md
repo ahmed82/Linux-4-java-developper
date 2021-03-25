@@ -24,7 +24,7 @@ The -p command will print the command to be executed and prompt the user to run 
 ```
 echo 'one two three' | xargs -p touch
 ```
-run multiple commands with xargs by using the -I flag. This replaces occurrences of the argument with the argument passed to xargs. The following echos a string and creates a folder.
+Run multiple commands with xargs by using the -I flag. This replaces occurrences of the argument with the argument passed to xargs. The following echos a string and creates a folder.
 ```
 cat foo.txt | xargs -I % sh -c 'echo %; mkdir %'
 ```
