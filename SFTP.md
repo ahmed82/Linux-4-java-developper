@@ -1,7 +1,7 @@
 # SFTP
 
 ```
-sftpm user@server
+sftp user@server
 ```
 
 remote listing `ls`
