@@ -1,6 +1,6 @@
-# JPA Trick
+# JPA Tricks
 
-## update during create/update
+## Update during create/update
 ```
 	@PrePersist
 	@PreUpdate
@@ -9,13 +9,13 @@
 	}
 ```
 
-## insert default value if null
+## Insert default value if null
 ```
 	@Column(name = "lastUpdatedBy", length = 255)
 	private String lastUpdatedBy = "API-user";
 ```
 
-## add multi column UniqueConstraint
+## Add multi column UniqueConstraint
 ```
 @Data
 @Entity
@@ -25,7 +25,7 @@
 			(columnNames={"globalId", "userId","brandCode"}))
 public class LoyaltySubmissions {
 ```
-## multi column primary key
+## Multi columns primary key
 add `@IdClass` on top of the class
 ```
 @IdClass(EmployeeStatus.EmployeeCompositKey.class)
@@ -59,3 +59,4 @@ public static class EmployeeStatusCompositKey implements Serializable {
     	
 	}
 ```
+
