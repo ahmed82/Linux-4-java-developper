@@ -15,7 +15,7 @@
 	private String lastUpdatedBy = "API-user";
 ```
 
-## add ,ulti column constraints
+## add multi column UniqueConstraint
 ```
 @Data
 @Entity
@@ -24,4 +24,38 @@
 			@UniqueConstraint
 			(columnNames={"globalId", "userId","brandCode"}))
 public class LoyaltySubmissions {
+```
+## multi column primary key
+add `@IdClass` on top of the class
+```
+@IdClass(EmployeeStatus.EmployeeCompositKey.class)
+```
+Implements Serializable
+```
+implements Serializable
+```
+Create inner CompositKey class
+```
+public static class EmployeeStatusCompositKey implements Serializable {
+
+    	private static final long serialVersionUID = 1L;
+    	
+    	@SuppressWarnings("unused")
+		private String brandCode;
+    	
+    	@SuppressWarnings("unused")
+		private String employeeStatus;
+
+		public EmployeeStatusCompositKey() {
+			super();
+		}
+
+		public EmployeeStatusCompositKey(String brandCode, String employeeStatus) {
+			super();
+			this.brandCode = brandCode;
+			this.employeeStatus = employeeStatus;
+		}
+    	
+    	
+	}
 ```
