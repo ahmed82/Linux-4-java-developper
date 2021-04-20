@@ -28,3 +28,4 @@ vagrant init
 The /vagrant directory in the VM it is mount to the host directory contain the vagrentfile.
 So you can use subfile in the host machine and use them in the VM machine (if you want to share Script or Software with the VM).
 Destroy the VM Not effecting the `/vagrant/script/`.
+![image](https://user-images.githubusercontent.com/9446035/115386818-e647af00-a1a7-11eb-8d43-1078d08cca96.png)
