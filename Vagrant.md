@@ -14,4 +14,17 @@ Config.vm.box = “acloudfan/hlfdev2.0-0”
 
 ```
 vagrant box list
+vagrant status
+vagrant destroy -f
 ```
+
+## Create Vagrent 
+This command create a singl file that hold the Vagrant configuration with the name `Vagrantfile`
+```
+vagrant init
+```
+
+## /vagrant 
+The /vagrant directory in the VM it is mount to the host directory contain the vagrentfile.
+So you can use subfile in the host machine and use them in the VM machine (if you want to share Script or Software with the VM).
+Destroy the VM Not effecting the `/vagrant/script/`.
