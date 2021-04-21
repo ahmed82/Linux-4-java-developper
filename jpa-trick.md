@@ -20,9 +20,9 @@
 @Data
 @Entity
 @Table( /* schema = "DBO", */  name = "ASSOCIATE_SUBMISSIONS",
-		uniqueConstraints=
+		uniqueConstraints={
 			@UniqueConstraint
-			(columnNames={"globalId", "userId","brandCode"}))
+			(columnNames={"globalId", "userId","brandCode"})})
 public class LoyaltySubmissions {
 ```
 ## Multi columns primary key
