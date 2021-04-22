@@ -1,5 +1,4 @@
 # Vagrant
-## Vagrant: 
 is a tool for building and managing virtual machine environments in a single workflow. 
 a.	CLI tool for managing virtual machines.
 b.	Workflow automated by way of Vagrant file. 
