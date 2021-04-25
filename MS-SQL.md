@@ -1,4 +1,4 @@
-# Ms-SQl 20212
+# Ms-SQl 2012
 
 List all linked server if you don’t want the local server returned
 ```
