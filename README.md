@@ -1,7 +1,7 @@
 # Linux
 Repository contain all kubernetes and Linux note 
 
-## usfull commands:
+## useful commands:
 Disable Sudo Password Prompt Per Session
 ```
 sudo -i
