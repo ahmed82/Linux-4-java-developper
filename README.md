@@ -59,6 +59,8 @@ https://training.github.com/downloads/github-git-cheat-sheet.pdf
 https://git-scm.com/doc
 https://github.com/githubschool/yurt
 https://githubtraining.github.io/training-manual/#/01_getting_ready_for_class
+https://github.com/githubschool/yurt/issues/1
+
 
 
 
