@@ -50,6 +50,16 @@ sudo systemctl start docker
 chmod a+rx ~/
 ```
 
+# GitHub training Notes
+https://github.com/nasa/fprime
+If you are interested on the F-prime topic: https://github.blog/2021-04-19-open-source-goes-to-mars/ 
+this blog post contains good information about how open source helped to get this done :)
+https://training.github.com/downloads/github-git-cheat-sheet.pdf
+
+https://git-scm.com/doc
+https://github.com/githubschool/yurt
+https://githubtraining.github.io/training-manual/#/01_getting_ready_for_class
+
 
 
 
