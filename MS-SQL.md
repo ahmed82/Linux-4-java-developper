@@ -21,3 +21,7 @@ EXEC sp_rename 'dbo.AssociateSubmissions.oldglobalIdname', 'newglobalId', 'COLUM
 ```
 EXEC sp_rename 'dbo.EmployeeClass', 'AllowedEmployeeClass';
 ```
+* Update Primary Key dont need to drop the constrain.
+```
+ALTER TABLE [dbo].[ASSOCIATES] ALTER COLUMN ASSOCIATE_ID VARCHAR (50) NOT NULL;
+```
