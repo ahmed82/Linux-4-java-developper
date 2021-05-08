@@ -59,4 +59,17 @@ public static class EmployeeStatusCompositKey implements Serializable {
     	
 	}
 ```
+## Call Stored Procedure
 
+Spring boot and Sql Server- In your Repository
+
+1) with no parameter
+```
+@Query(value = "{call yourSpName()}", nativeQuery = true)
+List<Map<String, Object>> methodName();
+```
+2) with Parameter
+```
+@Query(value = "{call yourSpName(:param1)}", nativeQuery = true)
+List<Map<String, Object>> methodName(@Param("param1")Long param1);
+```
