@@ -7,7 +7,7 @@ sudo yum update httpd
 rpm -q httpd or rpm -qa | grep -i http
 ```
 
-```java
+```shell
 sudo yum install httpd
 ```
 ```xml
