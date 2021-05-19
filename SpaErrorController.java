@@ -29,4 +29,4 @@ public class SpaErrorController implements ErrorController
     public String getErrorPath() {
         return "/error";
     }
-}
+}//class
