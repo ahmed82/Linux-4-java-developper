@@ -29,3 +29,5 @@ https://soft.lafibre.info/
 ## CentOS installatioin
 I used to install with GUI
 faild for 2020 vm's
+
+## test on Ubuntu 
