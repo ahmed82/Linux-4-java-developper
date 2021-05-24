@@ -7,3 +7,12 @@
 Go: install/update
 ```
 select all.
+3-  Ctr+Shft+p then type:
+```
+preferences: Open Setting (JSON)
+```
+
+# RUN
+```
+Go: build <main.go>
+```
