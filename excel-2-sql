@@ -8,11 +8,14 @@
 ="insert into dbo.Customer ("&A1&","&B1&","&C1&","&D1&","&E1&") Values"
 ```
 
-In Excel we start formula with = (equal to sign). For concatenation we use &. To add string we have to put double quotes around as we did for comma ",".
+In Excel we start formula with = (equal to sign). For concatenation we use &. 
+To add string we have to put double quotes around as we did for comma ",".
 
 
 Now first part of our Insert statement is ready. we have to generate the values part for our insert statement. Go to 2nd Row and use below formula.
 ```
 ="('"&A2&"','"&B2&"',"&C2&",'"&TEXT(D2,"dd/mm/yyyy")&"',"&E2&"),"
 ```
-Drag it down to all the way till last record. All Insert values will be generate. Copy all the values from column G and paste into SSMS. There will be extra comma(,) at the end with last record. Remove that and run your insert statement to test if working as expected.
+Drag it down to all the way till last record. All Insert values will be generate. 
+Copy all the values from column G and paste into SSMS. There will be extra comma(,) at the end with last record. 
+Remove that and run your insert statement to test if working as expected.
