@@ -1,4 +1,4 @@
-## Git cmd cheatsheet 
+# Git cmd cheatsheet 
 
 to checkout a specific commit hash
 ```
@@ -48,18 +48,20 @@ git log --no-merges
 ```
 git log --merges
 ```
-### Link the deattached Head
+## Link the deattached Head
 ```
 git reset --hard HASH-CODE
 ```
-### Graphical view of the project history
+## Graphical view of the project history
 ```
 gitk --all
 ```
 
-### Revert one committ back 
+# Git Reset
+## Revert one committ back 
 ```
 git reset --soft HEAD~1
+git reset HEAD~1 // tested on loyalty-Solution Master
 ```
 If you don't want to keep these changes, simply use the --hard flag. Be sure to only do this when you're sure you don't need these changes anymore.
 ```
