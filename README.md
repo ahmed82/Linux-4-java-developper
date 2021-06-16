@@ -61,7 +61,10 @@ https://github.com/githubschool/yurt
 https://githubtraining.github.io/training-manual/#/01_getting_ready_for_class
 https://github.com/githubschool/yurt/issues/1
 
-
+## find Java home
+```
+readlink -f $(which java)
+```
 
 
 
