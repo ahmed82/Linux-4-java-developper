@@ -51,9 +51,7 @@ tail -f LogFiles/Application/spring.RD501AC53AC551.log
 ```
 
 # 
-```
-java -jar /home/site/wwwroot/loyalty-solution.war -DSpring.profile=qa
-```
+
 ## System Property
 ```
 [user@host ~]$ java -jar -Dspring.profiles.active=test myproject.jar
@@ -64,4 +62,18 @@ java -jar /home/site/wwwroot/loyalty-solution.war -DSpring.profile=qa
 [user@host ~]$ java -jar myproject.jar --spring.profiles.active=test
 ```
 
+---
+
+
+# System environment Variable:
+
+## Windows: Start -> type "envi" select environment variables and add a new: 
+Name: spring_profiles_active
+Value: dev (or whatever yours is)
+
+## Linux: add following line to /etc/environment under PATH:
+
+spring_profiles_active=prod (or whatever profile is)
+
+then also export spring_profiles_active=prod so you have it in the runtime now.
 
