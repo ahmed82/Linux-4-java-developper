@@ -77,3 +77,18 @@ spring_profiles_active=prod (or whatever profile is)
 
 then also export spring_profiles_active=prod so you have it in the runtime now.
 
+#### OR
+
+# For Tomcat 8:
+
+## Linux :
+
+Create setenv.sh and update it with following:
+
+export SPRING_PROFILES_ACTIVE=dev
+
+## Windows:
+
+Create setenv.bat and update it with following:
+
+set SPRING_PROFILES_ACTIVE=dev
