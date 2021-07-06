@@ -43,3 +43,9 @@ helm get values gf-bot-qa -o yaml > gf.values.yml
 ```
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ```
+
+
+## Life log app service
+```
+tail -f LogFiles/Application/spring.RD501AC53AC551.log
+```
