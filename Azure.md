@@ -49,3 +49,19 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ```
 tail -f LogFiles/Application/spring.RD501AC53AC551.log
 ```
+
+# 
+```
+java -jar /home/site/wwwroot/loyalty-solution.war -DSpring.profile=qa
+```
+## System Property
+```
+[user@host ~]$ java -jar -Dspring.profiles.active=test myproject.jar
+```
+
+## Program Argument
+```
+[user@host ~]$ java -jar myproject.jar --spring.profiles.active=test
+```
+
+
