@@ -49,10 +49,20 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 ```
 tail -f LogFiles/Application/spring.RD501AC53AC551.log
 ```
+or
+```
+watch tail -n20 your.log
 
-# 
+less +F file.log
+```
+The benefit is that less can also truncate long lines for you with the -S flag, preventing them from wrapping around the terminal screen while allowing you to scroll left/right.
+Instead of piping tail -f file.log through cut or something similar, you can just:
+```
+less -S +F file.log
+```
 
-## System Property
+
+# System Property
 ```
 [user@host ~]$ java -jar -Dspring.profiles.active=test myproject.jar
 ```
