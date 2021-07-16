@@ -1,5 +1,11 @@
 # GO
+Download Go runtime
+https://golang.org/doc/install
 
+verify the instalation
+```
+$ go version
+```
 1- install GO plugin in VScode
 
 2- Ctr+Shft+p then type:
