@@ -21,6 +21,20 @@ select all.
 ```
 preferences: Open Setting (JSON)
 ```
+add:
+```
+{
+    "ibm-blockchain-platform.fabric.wallets": [],
+    "ibm-blockchain-platform.fabric.gateways": [],
+    "ibm-blockchain-platform.fabric.environments": [],
+    "ibm-blockchain-platform.ext.repositories": [],
+    "ibm-blockchain-platform.ext.enableLocalFabric": true,
+    "files.autoSave": "afterDelay",
+    "ibm-blockchain-platform.v2.fabric.runtime": {
+        "1 Org Local Fabric": 8081
+    }
+}
+```
 
 # RUN
 ```
